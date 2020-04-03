@@ -1,0 +1,217 @@
+
+      body {
+          background: rgb(202, 202, 199);
+          color: rgb(29, 29, 29);
+          margin: 0;
+          font-family: 'Montserrat', sans-serif;
+          height: 900px;
+      }
+    
+      a {
+      color: #ff5e84;
+      font-weight: bold;
+      text-decoration: none;
+      }
+  
+      a:hover {
+        color: #ff5e84;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      p, .description {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.1px;
+      }
+
+      #container {
+        width: 90%;
+        max-width: 980px;
+        margin: 40px auto;
+        display: flex;
+      }
+
+      #intro {
+        width: 300px;
+        margin-right: 20px;
+      }
+
+      main {
+        margin: 32px 0;
+      }
+
+      #buttons {
+        display: flex;
+        margin-bottom: 32px;
+        justify-content: space-evenly;
+      }
+
+      button {
+          background: none;
+          color: #ff5e84;
+          border: none;
+          font-weight: bold;
+          transition: 0.3s;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 18px;
+          letter-spacing: 0.2px;
+      }
+
+      button.fat {
+        background: #ff5e84;
+        color: white;
+        border-radius: 6px;
+        width: 150px;
+        height: 40px;
+        text-decoration: none;
+      }
+
+      button.fat:hover {
+        text-decoration: none;
+        box-shadow: 4px 2px 16px rgba(255, 0, 92, 0.4);
+      }
+
+      button:hover {
+        opacity: 0.5;
+        text-decoration: underline;
+      }
+      
+      footer {
+        text-align: center;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0.2px;
+      }
+
+      .idea {
+        display: flex;
+        margin-bottom: 20px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px -8px rgba(1, 1, 1, 0.4);
+      }
+
+      .idea img {
+        width: 60px;
+        height: 60px;
+        margin-right: 32px;
+      }
+
+      .idea h3 {
+        margin: 0;
+      }
+
+      body .section .idea p {
+        margin: 8px 0;
+        color: #777;
+      }
+
+      .idea .description {
+        margin: 16px 0;
+      }
+
+
+
+      /* Modal */
+
+      #modal {
+        background: #ff5e84;
+
+        position: absolute;
+        top: 0;
+        
+        width: 100%;
+        height: 100%;
+
+        border-bottom: solid 300px #ff5e84;
+
+        display: flex;
+        justify-content: center;
+
+        transition: 500ms;
+      }
+      
+      #modal .content {
+        margin-top: 50px;
+        color: white;
+      }
+
+      #modal .content h1 {
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .content form {
+        max-width: 800px;
+        width: 80%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .content form div:nth-child(3),
+      .content form div:nth-child(4),
+      .content form div:nth-child(5) {
+        grid-column: span 2;
+      }
+
+      form input, textarea {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        border: solid #ff5e84;
+        outline: none;
+        font-size: 16px;
+      }
+
+      form label {
+        font-weight: 600;
+        line-height: 32px;
+        letter-spacing: 0.2px;
+      }
+
+      form button {
+        background: #fff;
+        width: 150px;
+        height: 50px;
+        border-radius: 6px;
+        font-size: 18px;
+        transition: 0.4s;
+        cursor: pointer;
+        grid-column: 2;
+        justify-self: end;
+        margin-top: 28px;
+      }
+
+      form button:hover {
+        text-decoration: none;
+        background-color: #0984e3;
+        color: #fff;
+        border: solid #FFF;
+      }
+
+      #modal.hide {
+      opacity: 0;
+      visibility: hidden;
+      }
+
+      .content form a {
+        width: 150px;
+        height: 50px;
+
+        color: #FFF;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-top: 28px;
+
+      }
