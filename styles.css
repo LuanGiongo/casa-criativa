@@ -1,10 +1,35 @@
 
+      /* GLOBAL */
+  
       body {
           background: rgb(202, 202, 199);
-          color: rgb(29, 29, 29);
+          color: #252828;
           margin: 0;
           font-family: 'Montserrat', sans-serif;
-          height: 900px;
+      }
+
+      body.hideScroll {
+        overflow: hidden;
+      }
+
+      .button {
+        color: white;
+        text-decoration: none;
+        list-style-type: none;
+        background-color: #ff5e84;
+        width: 150px;
+        height: 50px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+      }
+      
+      .button:hover {
+        text-decoration: none;
+        background-color: #0984e3;
+        color: yellow;
       }
     
       a {
@@ -19,11 +44,23 @@
         text-decoration: underline;
       }
 
-      p, .description {
+      h5 {
+        margin: 0;
+        opacity: 0.7;
+      }
+
+      p,.description {
         font-size: 16px;
         line-height: 24px;
         letter-spacing: 0.1px;
       }
+
+      #apresentation {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.1px;
+      }
+
 
       #container {
         width: 90%;
@@ -34,11 +71,11 @@
 
       #intro {
         width: 300px;
-        margin-right: 20px;
+        margin-right: 64px;
       }
 
       main {
-        margin: 32px 0;
+        margin: 76px 0;
       }
 
       #buttons {
@@ -51,32 +88,25 @@
           background: none;
           color: #ff5e84;
           border: none;
-          font-weight: bold;
           transition: 0.3s;
           cursor: pointer;
           font-size: 14px;
-          font-weight: 700;
+          font-weight: 600;
           line-height: 18px;
           letter-spacing: 0.2px;
       }
 
-      button.fat {
+      a.fat {
         background: #ff5e84;
         color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 6px;
         width: 150px;
         height: 40px;
         text-decoration: none;
-      }
 
-      button.fat:hover {
-        text-decoration: none;
-        box-shadow: 4px 2px 16px rgba(255, 0, 92, 0.4);
-      }
-
-      button:hover {
-        opacity: 0.5;
-        text-decoration: underline;
       }
       
       footer {
@@ -124,20 +154,23 @@
 
         position: absolute;
         top: 0;
-        
-        width: 100%;
-        height: 100%;
+        bottom: 0;
+        right: 0;
+        left: 0;
 
-        border-bottom: solid 300px #ff5e84;
 
         display: flex;
         justify-content: center;
 
         transition: 500ms;
       }
+
+      #modal.addScroll {
+        overflow: auto;
+      }
       
       #modal .content {
-        margin-top: 50px;
+        margin-top: 8%;
         color: white;
       }
 
@@ -149,7 +182,7 @@
       .content form {
         max-width: 800px;
         width: 80%;
-        margin: 0 auto;
+        margin: 0 auto 15%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -171,12 +204,6 @@
         font-size: 16px;
       }
 
-      form label {
-        font-weight: 600;
-        line-height: 32px;
-        letter-spacing: 0.2px;
-      }
-
       form button {
         background: #fff;
         width: 150px;
@@ -193,8 +220,7 @@
       form button:hover {
         text-decoration: none;
         background-color: #0984e3;
-        color: #fff;
-        border: solid #FFF;
+        color: yellow;
       }
 
       #modal.hide {
@@ -214,4 +240,59 @@
 
         margin-top: 28px;
 
+      }
+
+
+      /*IDEAS.HTML*/
+
+      #page-ideas #container {
+        display: block;
+      }
+
+      #page-ideas header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      #page-ideas nav {
+        display: flex;
+        align-items: center;
+      }
+
+      #page-ideas nav li {
+        margin-right: 16px;
+        list-style-type: none;
+      }
+
+      #page-ideas nav li:last-child {
+        margin: auto 0;
+      }
+
+      #page-ideas nav li a {
+        cursor: pointer;
+      }
+
+      section#title {
+        text-align: center;
+      } 
+
+      section#title p {
+        opacity:  0.7;
+        margin: 0;
+      }
+
+      section#title h1 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 28px;
+      }
+
+      section#ideas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      #page-ideas main {
+        margin: 62px 0;
       }
