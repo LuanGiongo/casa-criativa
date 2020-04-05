@@ -1,41 +1,13 @@
 const express = require("express");
 const server = express();
-
-const ideas =[
-  {
-    img:"https://image.flaticon.com/icons/svg/2729/2729007.svg",
-    title: "Curso de Programação",
-    category: "Estudo",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam iste dolore quasi eligendi ratione?",
-    url: "https://rocketseat.com.br"
-  },
-  {
-    img:"https://image.flaticon.com/icons/svg/2729/2729005.svg",
-    title: "Exercícios",
-    category: "Saúde",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam iste dolore quasi eligendi ratione?",
-    url: "https://rocketseat.com.br"
-  },
-  {
-    img:"https://image.flaticon.com/icons/svg/2729/2729009.svg",
-    title: "Vídeos de Culinária",
-    category: "Receitas",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam iste dolore quasi eligendi ratione?",
-    url: "https://rocketseat.com.br"
-  },
-  {
-    img:"https://image.flaticon.com/icons/svg/2729/2729027.svg",
-    title: "Meditação ",
-    category: "Saúde Mental",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam iste dolore quasi eligendi ratione?",
-    url: "https://rocketseat.com.br"
-  },
-]
+const db = require("./db")
 
 //arquivos estaticos
 server.use(express.static("public"));
+server.use(express.urlencoded({ extend: true }))
 
 //nunjucks
+
 const nunjucks = require ("nunjucks")
 nunjucks.configure("views", {
   express: server,
@@ -45,21 +17,64 @@ nunjucks.configure("views", {
 //rotas
 server.get("/", function(req, res) {
 
-  const reverseIdeas = [...ideas].reverse()
-  let lastIdeas = []
-    for (let idea of reverseIdeas) {
-        if(lastIdeas.length < 3) {
-            lastIdeas.push(idea)
-        }
+  db.all('SELECT * FROM ideas', function(err, rows) {
+    if (err) {
+      console.log(err)
+      return res.send("Erro no banco de dados.")
     }
 
-  return res.render("index.html", { ideas: lastIdeas })
+    const reverseIdeas = [...rows].reverse()
+
+    let lastIdeas = []
+      for (let idea of reverseIdeas) {
+          if(lastIdeas.length < 3) {
+              lastIdeas.push(idea)
+          }
+      }
+    
+      return res.render("index.html", { ideas: lastIdeas })
+  })
 })
 
 server.get("/ideas", function(req, res) {
+  db.all('SELECT * FROM ideas', function(err, rows) {
+    if (err) {
+      console.log(err)
+      return res.send("Erro no banco de dados.")
+    }
 
-  const reverseIdeas = [...ideas].reverse()
-  return res.render("ideas.html", { ideas: reverseIdeas })
+    const reverseIdeas = [...rows].reverse()
+    return res.render("ideas.html", { ideas: reverseIdeas })
+  })
 })
+server.post("/", function(req, res) {
+  const query = `
+  INSERT INTO ideas(
+    image,
+    title,
+    category,
+    description,
+    link
+  ) VALUES(?,?,?,?,?);
+  `
+  const values = [
+    req.body.image,
+    req.body.title,
+    req.body.category,
+    req.body.description,
+    req.body.link
+  ]
+
+  db.run(query, values, function(err) {
+    if (err) {
+      console.log(err)
+      return res.send("Erro no banco de dados.")
+    }
+
+    return res.redirect("/ideas")
+  })
+})
+
+//server.delete() --------- implementar
 
 server.listen(3000)
